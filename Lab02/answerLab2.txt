@@ -1,0 +1,16 @@
+1.When should accessor methods be used?
+Đôi khi các accessor methods phá vỡ tính đóng gói vì chúng cho phép truy cập vào các biến được bảo vệ và riêng tư của một lớp.
+Khi tính đóng gói bị phá vỡ và các getters bị lạm dụng thì có thể ta đang chuyển từ thiết kế hướng đối tượng sang hướng thủ tục bằng cách lấy các giá trị bằng getters và thực hiện hoạt động dựa trên chúng.
+Do đó, cần cân nhắc khi sử dụng anccessor methods: 
++ Khi cần bảo vệ sự riêng tư của dữ liệu, và muốn ngăn ngừa truy cập trực tiếp vào các trường (biến thành viên) của lớp.
++ Khi cần trừu tượng hóa dữ liệu cơ sở và cung cấp một giao diện cấp cao và thống nhất để truy cập các thuộc tính của một đối tượng. Điều này làm cho việc làm việc với các đối tượng dễ dàng hơn mà không cần biết chi tiết triển khai bên trong.
++ Khi cần thực hiện kiểm tra dữ liệu trước khi trả về giá trị của thuộc tính. Ví dụ, bạn có thể đảm bảo rằng một thuộc tính nhiệt độ nằm trong phạm vi hợp lệ hoặc rằng một thuộc tính chuỗi không null hoặc trống trước khi trả về giá trị của nó.
++ Khi cần tính toán và trả về các thuộc tính dựa trên các thuộc tính hiện có của đối tượng. Ví dụ, bạn có thể có một phương thức getArea() trong lớp Rectangle để tính toán và trả về diện tích dựa trên chiều rộng và chiều cao.
+ccessor methods cho phép bạn kiểm soát quyền truy cập đến một thuộc tính. Bạn có thể làm thuộc tính riêng tư và cung cấp một phương thức getter để cho phép truy cập chỉ đọc, đồng thời ngăn chặn việc sửa đổi trực tiếp thuộc tính.
++ Khi cần truy xuất dữ liệu từ cơ sở dữ liệu, thực hiện biến đổi hoặc các hoạt động khác.
+
+2. If you create a constructor method to build a DVD by title then create a constructor method to build 
+a DVD by category. Does JAVA allow you to do this?
+
+Có. Bởi vì 2 phương thức có 2 chữ kí khác nhau. Chữ kí phương thức bao gồm cả tên phương thức và tham số truyền vào. 
+Hai phương thức có cùng tên nhưng khác nhau ở tham số truyền vào. Vì vậy JAVA vẫn cho phép tạo ra cả 2 phương thức đó. 
