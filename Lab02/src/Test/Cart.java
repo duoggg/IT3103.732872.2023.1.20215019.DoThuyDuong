@@ -23,6 +23,29 @@ public class Cart {
 		}	
 	}
 	
+	// // Overloading with array
+	// public void addDigitalVideoDisc(DigitalVideoDisc [] dvdList) {
+	// 	for(DigitalVideoDisc i : dvdList){
+	// 		addDigitalVideoDisc(i);
+	// 	}
+	// 	System.out.println("The disc has been added ");
+	// }
+
+	// Overloading with n arbitrary number of arguments
+	public void addDigitalVideoDisc(DigitalVideoDisc... dvdList){
+		for(DigitalVideoDisc i : dvdList){
+			addDigitalVideoDisc(i);
+		}
+		//System.out.println("The disc has been added ");
+	}
+
+	// Overloading by differering the number of parameters
+	public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2){
+		addDigitalVideoDisc(dvd1);
+		addDigitalVideoDisc(dvd2);
+		//System.out.println("The disc has been added ");
+	}
+	
 	public void  removeDigitalVideoDisc(DigitalVideoDisc disc) {
 		if(qtyOrdered <= 0) System.out.println("Nothing in your cart !");
 		else {
@@ -52,10 +75,5 @@ public class Cart {
 		}
 		return sum ; 
 	}
-
-
-	
-
-	
 	
 }
