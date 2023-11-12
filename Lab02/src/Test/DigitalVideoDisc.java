@@ -55,6 +55,11 @@ public class DigitalVideoDisc {
 		return nbDigitalVideoDiscs;
 	}
 	
+	// Chuỗi dữ liệu trong DVD
+	public String toString() {
+		return (this.id + "." + " DVD - " + this.title + " - " + this.category + " - " + this.director + " - " 
+				+ this.lenght + " : " + this.cost + "$" ) ;
+	}
 
 	// Do Thuy Duong 20215019
 	// constuctor method
@@ -105,6 +110,7 @@ public class DigitalVideoDisc {
 		this.director = director;
 		this.cost = cost;
 	}
+	
 
 	
 	

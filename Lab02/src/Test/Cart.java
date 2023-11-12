@@ -85,5 +85,20 @@ public class Cart {
 		}
 		
 	}
+
+	// In ra các sản phẩm có trong cart 
+	public void print() {
+		System.out.println("Do Thuy Duong 20215019");
+		System.out.println("***********************CART***********************");
+        
+        for (int i = 0; i < qtyOrdered; i++) {
+            DigitalVideoDisc dvd = itemsOrdered[i];
+            System.out.printf("%s\n",dvd.toString());
+        }
+
+        float totalCost = totalCost();
+        System.out.printf("Total cost: %.2f $\n", totalCost);
+        System.out.println("***************************************************");
+    }
 	
 }
