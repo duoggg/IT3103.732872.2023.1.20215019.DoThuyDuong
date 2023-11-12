@@ -10,6 +10,9 @@ public class DigitalVideoDisc {
 	private String director;
 	private int lenght;
 	private float cost;
+	private int id ;
+	private static int nbDigitalVideoDiscs = 0;
+
 	
 	// accessors and mutators
 	public String getTitle() {
@@ -43,10 +46,30 @@ public class DigitalVideoDisc {
 	public void setCost(float cost) {
 		this.cost = cost;
 	}
+	public int getID() {
+		return id;
+	}
 	
+	// Lấy số lượng đĩa có trong cart
+	public int getNbDigitalVideoDisc() {
+		return nbDigitalVideoDiscs;
+	}
+	
+
 	// Do Thuy Duong 20215019
 	// constuctor method
+	
+	public DigitalVideoDisc() {
+		// tăng số lượng và set ID
+		nbDigitalVideoDiscs++;
+		id = nbDigitalVideoDiscs;
+	}
+	
 	public DigitalVideoDisc(String title, String category, String director, int lenght, float cost) {
+		// tăng số lượng và set ID
+		nbDigitalVideoDiscs++;
+		id = nbDigitalVideoDiscs;
+
 		this.title = title;
 		this.category = category;
 		this.director = director;
@@ -55,16 +78,28 @@ public class DigitalVideoDisc {
 	}
 	
 	public DigitalVideoDisc(String title) {
+		// tăng số lượng và set ID
+		nbDigitalVideoDiscs++;
+		id = nbDigitalVideoDiscs;
+
 		this.title = title;
 	}
 	
 	public DigitalVideoDisc(String title, String category, float cost) {
+		// tăng số lượng và set ID
+		nbDigitalVideoDiscs++;
+		id = nbDigitalVideoDiscs;
+
 		this.title = title;
 		this.category = category;
 		this.cost = cost;
 	}
 	
 	public DigitalVideoDisc(String title, String category, String director, float cost) {
+		// tăng số lượng và set ID
+		nbDigitalVideoDiscs++;
+		id = nbDigitalVideoDiscs;
+		
 		this.title = title;
 		this.category = category;
 		this.director = director;

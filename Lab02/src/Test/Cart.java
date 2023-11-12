@@ -75,5 +75,15 @@ public class Cart {
 		}
 		return sum ; 
 	}
+
+	// In ra các sản phẩm trong cart 
+	public void printCart(){
+		for(int i = 0 ; i < this.qtyOrdered ; i++){
+			System.out.println("ID : " + this.itemsOrdered[i].getID() + 
+							   " Title : " + this.itemsOrdered[i].getTitle() + 
+							   " Cost : " + this.itemsOrdered[i].getCost() );
+		}
+		
+	}
 	
 }
