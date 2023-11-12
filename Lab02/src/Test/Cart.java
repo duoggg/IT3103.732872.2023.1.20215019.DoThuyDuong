@@ -76,6 +76,24 @@ public class Cart {
 		return sum ; 
 	}
 
+	// Tìm kiếm theo Id
+	public DigitalVideoDisc searchById(int id){
+		for(int i = 0 ; i < this.qtyOrdered ; i++){
+			if(itemsOrdered[i].getID() == id) return itemsOrdered[i];
+		}
+		
+		return null;
+	}
+	
+	// Tìm kiếm theo Title
+		public DigitalVideoDisc searchByTitle(String title){
+			for(int i = 0 ; i < this.qtyOrdered ; i++){
+				if(itemsOrdered[i].getTitle().equals(title) ) return itemsOrdered[i];
+			}
+			
+			return null;
+		}
+
 	// In ra các sản phẩm trong cart 
 	public void printCart(){
 		for(int i = 0 ; i < this.qtyOrdered ; i++){
