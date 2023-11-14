@@ -1,3 +1,6 @@
+DO THUY DUONG 20215019
+OOP LAB
+
 1. Assignment Submission
 	For this lab class, you will have to turn in your work twice, specifically:
 		▪ Right after the class: for this deadline, you should include any work you have done within the lab class.
@@ -17,5 +20,13 @@
 	However, we would use a modified version of Release Flow for simplicity.
 	● We can create as many branches as we need.
 	● We name branches with meaningful names. See Table 1-Branching policy. 
-
+3. Passing parameter 
+	- Question: Is JAVA a Pass by Value or a Pass by Reference programming language?
+	First of all, we recall what is meant by pass by value or pass by reference.
+		 Pass by value: The method parameter values are copied to another variable and then the copied  object is passed to the method. That's why it's called pass by value 
+		 Pass by reference: An alias or reference to the actual parameter is passed to the method. That's why it's called pass by reference.
+	Now, you will practice with the DigitalVideoDisc class to test how JAVA passes parameters. For this 
+	exercise, you will need to temporarily add a setter for the attribute title of the DigitalVideoDisc class.
+	Create a new class named TestPassingParameter in the current project
+		● Check the option for generating the main method in this class like in Figure 2
 
