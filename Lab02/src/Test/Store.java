@@ -1,5 +1,7 @@
 package Test;
 
+import hust.soict.dsai.lab02.DigitalVideoDisc;
+
 public class Store {
 	public static final int MAX_NUMBERS_ORDERED = 20 ;
 	private int qtyOrdered  ; 

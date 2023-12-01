@@ -1,6 +1,6 @@
 package hust.soict.dsai.aims.cart;
 
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20 ;
@@ -81,7 +81,7 @@ public class Cart {
 	// Tìm kiếm theo Id
 	public DigitalVideoDisc searchById(int id){
 		for(int i = 0 ; i < this.qtyOrdered ; i++){
-			if(itemsOrdered[i].getID() == id) return itemsOrdered[i];
+			if(itemsOrdered[i].getId() == id) return itemsOrdered[i];
 		}
 		
 		return null;
@@ -99,7 +99,7 @@ public class Cart {
 	// In ra các sản phẩm trong cart 
 	public void printCart(){
 		for(int i = 0 ; i < this.qtyOrdered ; i++){
-			System.out.println("ID : " + this.itemsOrdered[i].getID() + 
+			System.out.println("ID : " + this.itemsOrdered[i].getId() + 
 							   " Title : " + this.itemsOrdered[i].getTitle() + 
 							   " Cost : " + this.itemsOrdered[i].getCost() );
 		}
