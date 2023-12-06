@@ -8,7 +8,7 @@ public class StoreTest {
 		System.out.println("Do Thuy Duong 20215019");
 		
 // Test addDVD	
-		System.out.println("\nADD DVD TO STORE");
+		System.out.println("\nADD Media TO STORE");
 		Store store = new Store();
 		DigitalVideoDisc dvd1 =  new DigitalVideoDisc("The Lion King", "Animation", 
 						"Roger Allers", 87, 19.95f );
@@ -16,17 +16,17 @@ public class StoreTest {
 				"George Lucas", 87, 24.95f );
 		DigitalVideoDisc dvd3 =  new DigitalVideoDisc("Aladin", "Animation", 18.99f );		
 		
-		store.addDVD(dvd1);
-		store.addDVD(dvd2);
-		store.addDVD(dvd3);
+		store.addMedia(dvd1);
+		store.addMedia(dvd2);
+		store.addMedia(dvd3);
 		
-		System.out.println("The numbers of dvds in cart: " + store.getQtyOrdered());
+		System.out.println("The numbers of media in cart: " + store.numberOfItems());
 		store.printStore();
 		
 // TEST removeDVD
-		System.out.println("\nREMOVE DVD FROM STORE");
-		store.removeDVD(dvd2);
-		System.out.println("The numbers of dvds in cart: " + store.getQtyOrdered());
+		System.out.println("\nREMOVE Media FROM STORE");
+		store.removeMedia(dvd2);
+		System.out.println("The numbers of media in cart: " + store.numberOfItems());
 		store.printStore();
 	}
 }

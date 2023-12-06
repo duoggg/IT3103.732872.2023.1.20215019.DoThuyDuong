@@ -1,69 +1,57 @@
 package hust.soict.dsai.aims.cart;
 
-import hust.soict.dsai.aims.media.DigitalVideoDisc;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+import hust.soict.dsai.aims.media.Media;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20 ;
-	private int qtyOrdered  ; 
-	private DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
-	
+
+	private  ArrayList<Media> itemsOrdered = new ArrayList<Media>();
 	
 	public Cart() {
-		this.qtyOrdered = 0;
+		
 	}
-
-	public int getQtyOrdered() {
-		return qtyOrdered;
+	
+	public int numberOfItems() {
+		return itemsOrdered.size();
 	}
-
-	public void addDigitalVideoDisc(DigitalVideoDisc disc) {
-		if(qtyOrdered >= MAX_NUMBERS_ORDERED) System.out.println("The cart is almost full !");
+	
+	public void clear() {
+		itemsOrdered = new ArrayList<Media>();
+	}
+	
+	public void addMedia(Media disc) {
+		if(itemsOrdered.size() >= MAX_NUMBERS_ORDERED) System.out.println("The cart is almost full !");
 		else {
-			this.itemsOrdered[qtyOrdered] = disc;
-			qtyOrdered ++ ;
-			System.out.println("The disc has been added ");
+			this.itemsOrdered.add(disc);
+			System.out.println("The Media has been added ");
 		}	
 	}
 	
-	// // Overloading with array
-	// public void addDigitalVideoDisc(DigitalVideoDisc [] dvdList) {
-	// 	for(DigitalVideoDisc i : dvdList){
-	// 		addDigitalVideoDisc(i);
-	// 	}
-	// 	System.out.println("The disc has been added ");
-	// }
 
 	// Overloading with n arbitrary number of arguments
-	public void addDigitalVideoDisc(DigitalVideoDisc... dvdList){
-		for(DigitalVideoDisc i : dvdList){
-			addDigitalVideoDisc(i);
+	public void addMedia(Media... dvdList){
+		for(Media i : dvdList){
+			addMedia(i);
 		}
 		//System.out.println("The disc has been added ");
 	}
 
-	// Overloading by differering the number of parameters
-	public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2){
-		addDigitalVideoDisc(dvd1);
-		addDigitalVideoDisc(dvd2);
-		//System.out.println("The disc has been added ");
-	}
 	
-	public void  removeDigitalVideoDisc(DigitalVideoDisc disc) {
-		if(qtyOrdered <= 0) System.out.println("Nothing in your cart !");
+	public void  removeMedia(Media disc) {
+		if(itemsOrdered.size() == 0) System.out.println("Nothing in your cart !");
 		else {
-			for(int i = 0 ; i < qtyOrdered ; i++) {
-				if(disc.getTitle().equals(itemsOrdered[i].getTitle())) {
+			for(Media m : itemsOrdered) {
+				if(disc.getTitle().equals(m.getTitle())) {
 					
 					// Cap nhat lai array itemsOrdered[] 
-					for(int j = i ; j < qtyOrdered ; j++) {
-						itemsOrdered[j] = itemsOrdered[j + 1]; 
-					}
-					
-					// Cap nhat lai so luong DVD trong gio hang
-					qtyOrdered-- ;
+					itemsOrdered.remove(m);
 					
 					// Dua ra thong bao
-					System.out.println("The disc has been removed !");
+					System.out.println("The Media has been removed !");
 					break;
 				}
 			}
@@ -72,36 +60,58 @@ public class Cart {
 	
 	public float totalCost() {
 		float sum  = 0;
-		for(int i = 0 ; i < qtyOrdered ; i++) {
-			sum += itemsOrdered[i].getCost() ;
+		for(Media m : itemsOrdered) {
+			sum += m.getCost() ;
 		}
 		return sum ; 
 	}
 
 	// Tìm kiếm theo Id
-	public DigitalVideoDisc searchById(int id){
-		for(int i = 0 ; i < this.qtyOrdered ; i++){
-			if(itemsOrdered[i].getId() == id) return itemsOrdered[i];
-		}
-		
+	public Media searchById(int id){
+		for(Media m : itemsOrdered){
+			if(m.getId() == id) return m;
+		}	
 		return null;
 	}
 	
 	// Tìm kiếm theo Title
-		public DigitalVideoDisc searchByTitle(String title){
-			for(int i = 0 ; i < this.qtyOrdered ; i++){
-				if(itemsOrdered[i].getTitle().equals(title) ) return itemsOrdered[i];
+		public Media searchByTitle(String title){
+			for(Media m : itemsOrdered){
+				if(m.getTitle().equals(title) ) return m;
 			}
 			
 			return null;
 		}
-
+		
+	// Sort By Title
+		public void sortByTitle() {
+	        Collections.sort(itemsOrdered, new Comparator<Media>() {
+	            @Override
+	            public int compare(Media media1, Media media2) {
+	                return media1.getTitle().compareTo(media2.getTitle());
+	            }
+	        });
+	        System.out.println("Cart sorted by title.");
+	        printCart();
+	    }
+	// Sort By Cost
+		public void sortByCost() {
+	        Collections.sort(itemsOrdered, new Comparator<Media>() {
+	            @Override
+	            public int compare(Media media1, Media media2) {
+	                return Float.compare(media1.getCost(), media2.getCost());
+	            }
+	        });
+	        System.out.println("Cart sorted by cost.");
+	        printCart();
+	    }
+			
 	// In ra các sản phẩm trong cart 
 	public void printCart(){
-		for(int i = 0 ; i < this.qtyOrdered ; i++){
-			System.out.println("ID : " + this.itemsOrdered[i].getId() + 
-							   " Title : " + this.itemsOrdered[i].getTitle() + 
-							   " Cost : " + this.itemsOrdered[i].getCost() );
+		for(Media m : itemsOrdered){
+			System.out.println("ID : " + m.getId() + 
+							   " Title : " + m.getTitle() + 
+							   " Cost : " + m.getCost() );
 		}
 		
 	}
@@ -111,9 +121,8 @@ public class Cart {
 		System.out.println("Do Thuy Duong 20215019");
 		System.out.println("***********************CART***********************");
         
-        for (int i = 0; i < qtyOrdered; i++) {
-            DigitalVideoDisc dvd = itemsOrdered[i];
-            System.out.printf("%s\n",dvd.toString());
+        for (Media m : itemsOrdered) {
+            System.out.printf("%s\n",m.toString());
         }
 
         float totalCost = totalCost();

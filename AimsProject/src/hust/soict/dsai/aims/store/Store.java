@@ -1,59 +1,71 @@
 package hust.soict.dsai.aims.store;
 
+import java.util.ArrayList;
+
+import hust.soict.dsai.aims.media.Book;
+import hust.soict.dsai.aims.media.CD;
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.Media;
 
 public class Store {
 	public static final int MAX_NUMBERS_ORDERED = 20 ;
-	private int qtyOrdered  ; 
-	private DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
+	
+	private  ArrayList<Media> itemsOrdered = new ArrayList<Media>();
 	
 	public Store() {
 		
 	}
 	
-	public int getQtyOrdered() {
-		return qtyOrdered;
+	public int numberOfItems() {
+		return itemsOrdered.size();
 	}
 	
 	// Them DVD
-	public void addDVD(DigitalVideoDisc disc) {
-		if(qtyOrdered >= MAX_NUMBERS_ORDERED) System.out.println("The store is almost full !");
+	public void addMedia(Media disc) {
+		if(itemsOrdered.size() >= MAX_NUMBERS_ORDERED) System.out.println("The store is almost full !");
 		else {
-			this.itemsOrdered[qtyOrdered] = disc;
-			qtyOrdered ++ ;
-			System.out.println("The disc has been added to store ");
+			itemsOrdered.add(disc) ;
+			System.out.println("The Media has been added to store ");
 		}			
 	}
 	
 	// Xoa DVD
-	public void  removeDVD(DigitalVideoDisc disc) {
-		if(qtyOrdered <= 0) System.out.println("Nothing in store !");
+	public void  removeMedia(Media disc) {
+		if(itemsOrdered.size() == 0) System.out.println("Nothing in store !");
 		else {
-			for(int i = 0 ; i < qtyOrdered ; i++) {
-				if(disc.getTitle().equals(itemsOrdered[i].getTitle())) {
+			for(Media m : itemsOrdered) {
+				if(disc.getTitle().equals(m.getTitle())) {
 					
 					// Cap nhat lai array itemsOrdered[] 
-					for(int j = i ; j < qtyOrdered ; j++) {
-						itemsOrdered[j] = itemsOrdered[j + 1]; 
-					}
-					
-					// Cap nhat lai so luong DVD trong gio hang
-					qtyOrdered-- ;
+					itemsOrdered.remove(disc);
 					
 					// Dua ra thong bao
-					System.out.println("The disc has been removed from store !");
+					System.out.println("The Media has been removed from store !");
 					break;
 				}
 			}
 		}	
 	}
 	
+	// Tìm kiếm theo Title
+			public Media searchByTitle(String title){
+				for(Media m : itemsOrdered){
+					if(m.getTitle().equals(title) ) return m;
+				}
+				
+				return null;
+			}
+	
 	// In ra cac DVD co trong Store
 	public void printStore(){
-		for(int i = 0 ; i < this.qtyOrdered ; i++){
-			System.out.println( 
-							   " Title : " + this.itemsOrdered[i].getTitle() + 
-							   " Cost : " + this.itemsOrdered[i].getCost() 
+		for(Media m : itemsOrdered){
+			String type = "";
+			if(m instanceof DigitalVideoDisc) {type = "Dis";}
+			else if(m instanceof Book) {type = "Book";}
+			else if(m instanceof CD) {type = "CD";}
+			System.out.println( type + " - " +
+							   " Title : " + m.getTitle() + "-" +
+							   " Cost : " + m.getCost() 
 							   );
 		}
 		

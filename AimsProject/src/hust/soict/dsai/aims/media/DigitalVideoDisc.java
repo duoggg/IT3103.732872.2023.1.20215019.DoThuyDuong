@@ -74,7 +74,7 @@ public class DigitalVideoDisc extends Disc implements Playable {
 	
 	// Chuỗi dữ liệu trong DVD
 		public String toString() {
-			return (this.getId() + "." + " DVD - " + this.getTitle() + " - " + this.getCategory() + " - " + this.getDirector() + " - " 
+			return ( " DVD - " + this.getTitle() + " - " + this.getCategory() + " - " + this.getDirector() + " - " 
 					+ this.getLenght() + " : " + this.getCost() + "$" ) ;
 		}
 

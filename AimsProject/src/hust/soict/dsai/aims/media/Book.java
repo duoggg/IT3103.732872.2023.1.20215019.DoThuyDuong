@@ -9,6 +9,12 @@ public class Book extends Media {
 	public Book() {
 		
 	}
+	
+	public Book(String title, float cost) {
+		this.setTitle(title);
+		this.setCost(cost);
+		
+	}
 
 	public void addAuthor(String name) {
 		if(!authors.contains(name)) {
@@ -32,6 +38,10 @@ public class Book extends Media {
 	
 	public void printAuthors() {
 		System.out.println(authors);
+	}
+	
+	public String toString() {
+		return ( " Book - " + this.getTitle() + " - " + this.getCategory() + " - " + this.getCost() + "$" ) ;
 	}
 	
 	public static void main(String[] args) {

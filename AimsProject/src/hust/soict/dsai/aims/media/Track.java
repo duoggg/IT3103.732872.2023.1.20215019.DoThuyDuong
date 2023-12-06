@@ -29,5 +29,13 @@ public class Track implements Playable {
 		
 	}
 	
+	@Override
+	public boolean equals(Object o) {
+		Track tmp = (Track) o ;
+		if(this.title.equals(tmp.getTitle()) && this.lenght == tmp.getLenght()) return true ;
+		return false ;
+		
+	}
+	
 	
 }
